@@ -12,11 +12,11 @@ def add_todo():
 
 st.title("My todo app")
 for i, todo in enumerate(todos):
-    checkbox = st.checkbox(todo, key=f"checkbox_{i}")
+    checkbox = st.checkbox(todo, key=todo)
     if checkbox == True:
         todos.pop(i)
         functions.write_todos(todos)
-        # del st.session_state[]
+        del st.session_state[todo]
         st.experimental_rerun()
 st.text_input(label="Enter a todo", placeholder="Add a new todo",
               on_change=add_todo, key="new_todo")
